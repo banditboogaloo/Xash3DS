@@ -1,4 +1,14 @@
 [submodule "mainui_3ds"]
 	path = mainui_3ds
-	url = https://github.com/masterfeizz/mainui_3ds.git
+	url = https://github.com/selimnahimi/mainui_3ds.git
+	branch = master
+
+[submodule "hlsdk_3ds"]
+	path = hlsdk_3ds
+	url = https://github.com/selimnahimi/hlsdk_3ds.git
+	branch = master
+	
+[submodule "picaGL"]
+	path = picaGL
+	url = https://github.com/selimnahimi/picaGL.git
 	branch = master
