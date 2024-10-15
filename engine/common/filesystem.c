@@ -306,7 +306,7 @@ emulate WIN32 FS behaviour when opening local file
 */
 const char *FS_FixFileCase( const char *path )
 {
-#if !defined _WIN32 && !TARGET_OS_IPHONE && !defined(_3DS) // assume case insensitive
+#if !defined _WIN32 && !TARGET_OS_IPHONE && !defined(__3DS__) // assume case insensitive
 	DIR *dir; struct dirent *entry;
 	char path2[PATH_MAX], *fname;
 
@@ -623,7 +623,7 @@ pack_t *FS_LoadPackPAK( const char *packfile, int *error )
 
 	packhandle = open( packfile, O_RDONLY|O_BINARY );
 
-#if !defined(_WIN32) && !defined(_3DS)
+#if !defined(_WIN32) && !defined(__3DS__)
 	if( packhandle < 0 )
 	{
 		const char *fpackfile = FS_FixFileCase( packfile );
@@ -1832,7 +1832,7 @@ void FS_Init( void )
 		fs_caseinsensitive = false;
 #endif
 
-#ifdef _3DS
+#ifdef __3DS__
 	fs_caseinsensitive = false;
 #endif
 
@@ -2071,7 +2071,7 @@ static file_t* FS_SysOpen( const char* filepath, const char* mode )
 
 	file->handle = open( filepath, mod|opt, 0666 );
 
-#if !defined(_WIN32) && !defined(_3DS)
+#if !defined(_WIN32) && !defined(__3DS__)
 	if( file->handle < 0 )
 	{
 		const char *ffilepath = FS_FixFileCase( filepath );
@@ -2145,7 +2145,7 @@ Look for a file in the filesystem only
 */
 qboolean FS_SysFileExists( const char *path, qboolean caseinsensitive )
 {
-#ifdef _3DS
+#ifdef __3DS__
 	int desc;
 
 	desc = open( path, O_RDONLY|O_BINARY );
@@ -2434,7 +2434,7 @@ file_t *FS_Open( const char *filepath, const char *mode, qboolean gamedironly )
 		char	real_path[MAX_SYSPATH];
 
 		// open the file on disk directly
-		#ifdef _3DS
+		#ifdef __3DS__
 		Q_sprintf( real_path, "%s%s", fs_gamedir, filepath ); //3DS doesn't seem to like double slashes
 		#else
 		Q_sprintf( real_path, "%s/%s", fs_gamedir, filepath );
@@ -2773,7 +2773,7 @@ byte *FS_LoadFile( const char *path, fs_offset_t *filesizeptr, qboolean gamediro
 
 	file = FS_Open( path, "rb", gamedironly );
 
-#if !defined(_WIN32) && !defined(_3DS)
+#if !defined(_WIN32) && !defined(__3DS__)
 	if( !file )
 	{
 		// Try to open this file with lowered path
@@ -2821,7 +2821,7 @@ byte *FS_LoadDirectFile( const char *path, fs_offset_t *filesizeptr )
 
 	file = FS_SysOpen( path, "rb" );
 
-#if !defined(_WIN32) && !defined(_3DS)
+#if !defined(_WIN32) && !defined(__3DS__)
 	if( !file )
 	{
 		// Try to open this file with lowered path
@@ -2857,7 +2857,7 @@ file_t *FS_OpenFile( const char *path, fs_offset_t *filesizeptr, qboolean gamedi
 {
 	file_t	*file = FS_Open( path, "rb", gamedironly );
 
-#if !defined(_WIN32) && !defined(_3DS)
+#if !defined(_WIN32) && !defined(__3DS__)
 	if( !file )
 		file = FS_Open( FS_ToLowerCase( path ), "rb", gamedironly );
 #endif // _WIN32
@@ -3770,7 +3770,7 @@ wfile_t *W_Open( const char *filename, const char *mode )
 	else if( mode[0] == 'w' ) wad->handle = open( filename, O_CREAT|O_TRUNC|O_WRONLY|O_BINARY, 0x666 );
 	else if( mode[0] == 'r' ) wad->handle = open( filename, O_RDONLY|O_BINARY, 0x666 );
 
-#if !defined(_WIN32) && !defined(_3DS)
+#if !defined(_WIN32) && !defined(__3DS__)
 	if( wad->handle < 0 )
 	{
 		const char *ffilename = FS_FixFileCase( filename );

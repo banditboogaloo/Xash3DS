@@ -28,7 +28,7 @@ GNU General Public License for more details.
 #include <unistd.h>
 #include <stdlib.h>
 #include <signal.h>
-#ifndef _3DS
+#ifndef __3DS__
 #include <dlfcn.h>
 #endif
 #ifndef __ANDROID__
@@ -324,7 +324,7 @@ char *Sys_GetCurrentUser( void )
 
 	if( GetUserName( s_userName, &size ))
 		return s_userName;
-#elif !defined(__ANDROID__) && !defined(_3DS)
+#elif !defined(__ANDROID__) && !defined(__3DS__)
 
 	uid_t uid = geteuid();
 	struct passwd *pw = getpwuid( uid );
@@ -706,7 +706,7 @@ void Sys_Error( const char *format, ... )
 	if( host.state == HOST_ERR_FATAL )
 		return; // don't execute more than once
 
-#ifdef _3DS
+#ifdef __3DS__
 	consoleInit(GFX_BOTTOM, NULL);
 #endif
 	// make sure that console received last message
@@ -745,7 +745,7 @@ void Sys_Error( const char *format, ... )
 		MSGBOX( text );
 	}
 
-#ifdef _3DS
+#ifdef __3DS__
 	while(hidKeysDown() != KEY_START)
 		hidScanInput();
 #endif

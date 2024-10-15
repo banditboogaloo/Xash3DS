@@ -586,7 +586,7 @@ SV_AutoSave_f
 */
 void SV_AutoSave_f( void )
 {
-	#ifdef _3DS //Slow and causes crashes sometimes on the O3DS
+	#ifdef __3DS__ //Slow and causes crashes sometimes on the O3DS
 	#warning FIXME - SV_AutoSave_f
 	#else
 	if( Cmd_Argc() != 1 )

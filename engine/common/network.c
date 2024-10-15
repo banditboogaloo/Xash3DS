@@ -13,7 +13,7 @@ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 GNU General Public License for more details.
 */
 
-#ifdef _3DS
+#ifdef __3DS__
 #include <3ds.h>
 #endif
 
@@ -164,7 +164,7 @@ void NET_FreeWinSock( void )
 #define SOCKET int
 #endif
 
-#ifdef _3DS
+#ifdef __3DS__
 #define htons __builtin_bswap16
 #define htonl __builtin_bswap32
 #define ntohs __builtin_bswap16
@@ -227,7 +227,7 @@ void NET_Restart_f( void );
 	static WSADATA winsockdata;
 #endif
 
-#ifdef _3DS
+#ifdef __3DS__
 	#define SOC_BUFFERSIZE  0x180000
 	#define SOC_ALIGN       0x1000
 
@@ -1310,7 +1310,7 @@ static int NET_IPSocket( const char *netInterface, int port )
 		pCloseSocket( net_socket );
 		return 0;
 	}
-#elif _3DS
+#elif __3DS__
 	if(( net_socket = pSocket( PF_INET, SOCK_DGRAM, IPPROTO_UDP )) < 0 )
 	{
 		if( errno != EAFNOSUPPORT )
@@ -1689,7 +1689,7 @@ void NET_Init( void )
 		MsgDev( D_WARN, "NET_Init: winsock initialization failed: %d\n", r );
 		return;
 	}
-#elif _3DS
+#elif __3DS__
 	SOC_buffer = (uint32_t*)memalign(SOC_ALIGN, SOC_BUFFERSIZE);
 	
 	if(SOC_buffer == NULL)

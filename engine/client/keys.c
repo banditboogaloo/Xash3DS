@@ -26,7 +26,7 @@ GNU General Public License for more details.
 #include <platform/sdl/events.h>
 #endif
 
-#ifdef _3DS
+#ifdef __3DS__
 #include <platform/ctr/in_ctr.h>
 #endif
 
@@ -115,7 +115,7 @@ keyname_t keynames[] =
 {"C_BUTTON", K_C_BUTTON, ""},
 {"Z_BUTTON", K_Z_BUTTON, ""},
 {"AUX16", K_AUX16, ""}, // generic
-#ifdef _3DS
+#ifdef __3DS__
 {"TOUCH_1", K_AUX17, ""},
 {"TOUCH_2", K_AUX18, ""},
 {"TOUCH_3", K_AUX19, ""},

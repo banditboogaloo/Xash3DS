@@ -96,7 +96,7 @@ glconfig_t	glConfig;
 glstate_t		glState;
 glwstate_t	glw_state;
 
-#ifdef _3DS
+#ifdef __3DS__
 vidmode_t vidmode[] =
 {
 { "400 x 240",			400,	240,	true	},

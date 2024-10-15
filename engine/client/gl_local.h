@@ -29,7 +29,7 @@ GNU General Public License for more details.
 
 extern byte	*r_temppool;
 
-#ifdef _3DS
+#ifdef __3DS__
 	#define BLOCK_SIZE		world.block_size	// lightmap blocksize
 	#define BLOCK_SIZE_DEFAULT	128		// for keep backward compatibility
 	#define BLOCK_SIZE_MAX	128

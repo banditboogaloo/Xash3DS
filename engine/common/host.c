@@ -19,7 +19,7 @@ GNU General Public License for more details.
 #include <SDL.h>
 #endif
 
-#if defined(_3DS)
+#if defined(__3DS__)
 #include <3ds.h>
 #endif
 
@@ -76,7 +76,7 @@ convar_t 	*cmd_scripting = NULL;
 
 static int num_decals;
 
-#ifdef _3DS
+#ifdef __3DS__
 int __stacksize__ = 2 * 1024 * 1024;
 u32 __ctru_linear_heap_size = 12 * 1024 * 1024;
 #endif
@@ -274,7 +274,7 @@ void Host_RunFrame()
 
 	if( !oldtime )
 		oldtime = Sys_DoubleTime();
-#ifdef _3DS
+#ifdef __3DS__
 	aptMainLoop();
 #endif
 
@@ -1065,7 +1065,7 @@ void Host_InitCommon( int argc, const char** argv, const char *progname, qboolea
 		Q_strncpy( host.rootdir, IOS_GetDocsDir(), sizeof( host.rootdir ));
 #elif defined(__SAILFISH__)
 		Q_strncpy( host.rootdir, GAMEPATH, sizeof( host.rootdir ));
-#elif defined(_3DS)
+#elif defined(__3DS__)
 		Q_strncpy( host.rootdir, "sdmc:/xash3d", sizeof( host.rootdir ));
 #elif defined(XASH_SDL)
 		if( !( baseDir = SDL_GetBasePath() ) )
@@ -1084,7 +1084,7 @@ void Host_InitCommon( int argc, const char** argv, const char *progname, qboolea
 	// get readonly root. The order is: check for arg, then env.
 	// If still not got it, rodir is disabled.
 	host.rodir[0] = 0;
-	#ifdef _3DS
+	#ifdef __3DS__
 	Q_strncpy( host.rodir, "romfs:/", sizeof( host.rodir ) );
 	#else
 	if( !Sys_GetParmFromCmdLine( "-rodir", host.rodir ) )
@@ -1280,7 +1280,7 @@ Host_Main
 */
 int EXPORT Host_Main( int argc, const char **argv, const char *progname, int bChangeGame, pfnChangeGame func )
 {
-	#ifdef _3DS
+	#ifdef __3DS__
 
 	osSetSpeedupEnable(true);
 
@@ -1371,7 +1371,7 @@ int EXPORT Host_Main( int argc, const char **argv, const char *progname, int bCh
 	Android_Init();
 #endif
 
-#ifdef _3DS
+#ifdef __3DS__
 	ctr_IN_Init();
 #endif
 

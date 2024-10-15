@@ -42,7 +42,7 @@ GNU General Public License for more details.
 	#include <stdlib.h>
 	#include <unistd.h>
 
-	#if !defined(_3DS)
+	#if !defined(__3DS__)
 		#include <dlfcn.h>
 	#else
 		#define RTLD_NOW 0
@@ -93,7 +93,7 @@ GNU General Public License for more details.
 		#define CLIENTDLL "libclient" POSTFIX ARCH_SUFFIX "." OS_LIB_EXT
 		#define SERVERDLL "libserver" POSTFIX ARCH_SUFFIX "." OS_LIB_EXT
 		#define PACKAGE   "/Xash3D"
-	#elif defined(_3DS)
+	#elif defined(__3DS__)
 		#define MENUDLL   "menu"
 		#define CLIENTDLL "client"
 		#define SERVERDLL "server"

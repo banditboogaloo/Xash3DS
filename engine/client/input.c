@@ -912,7 +912,7 @@ void Host_InputFrame( void )
 
 #ifdef USE_EVDEV
 	IN_EvdevFrame();
-#elif _3DS
+#elif __3DS__
 	ctr_IN_Frame();
 #endif
 

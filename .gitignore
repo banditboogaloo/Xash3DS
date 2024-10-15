@@ -318,3 +318,10 @@ CMakeSettings.json
 
 # rpmbuild
 RPMS/
+
+# VSCode
+.vscode
+
+# Libs
+*.a
+*.o

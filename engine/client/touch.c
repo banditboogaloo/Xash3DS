@@ -1408,7 +1408,7 @@ static void Touch_EditMove( touchEventType type, int fingerID, float x, float y,
 
 static void Touch_Motion( touchEventType type, int fingerID, float x, float y, float dx, float dy )
 {
-#ifdef _3DS
+#ifdef __3DS__
 	if( touch.precision )
 		dx *= touch_precise_amount->value, dy *= touch_precise_amount->value;
 		
@@ -1781,7 +1781,7 @@ static int Touch_ControlsEvent( touchEventType type, int fingerID, float x, floa
 
 int IN_TouchEvent( touchEventType type, int fingerID, float x, float y, float dx, float dy )
 {
-#ifndef _3DS
+#ifndef __3DS__
 	// simulate menu mouse click
 	if( cls.key_dest != key_game && !touch_in_menu->integer )
 	{
@@ -1848,7 +1848,7 @@ int IN_TouchEvent( touchEventType type, int fingerID, float x, float y, float dx
 
 	if( clgame.dllFuncs.pfnTouchEvent && clgame.dllFuncs.pfnTouchEvent( type, fingerID, x, y, dx, dy ) )
 		return true;
-#endif //_3DS
+#endif //__3DS__
 	return Touch_ControlsEvent( type, fingerID, x, y, dx, dy );
 }
 

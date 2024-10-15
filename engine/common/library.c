@@ -95,7 +95,7 @@ int dladdr( const void *addr, Dl_info *info )
 
 #endif
 
-#ifdef _3DS
+#ifdef __3DS__
 #include "platform/ctr/dll_ctr.h"
 #endif
 

@@ -67,7 +67,7 @@ SETUP BACKENDS DEFINITIONS
 		#endif
 	#endif // android case
 
-	#if defined _3DS && !defined XASH_SDL
+	#if defined __3DS__ && !defined XASH_SDL
 
 		#ifndef XASH_VIDEO
 			#define XASH_VIDEO VIDEO_CTR

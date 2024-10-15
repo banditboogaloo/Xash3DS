@@ -646,7 +646,7 @@ void GL_RoundImageDimensions( word *width, word *height, texFlags_t flags, qbool
 		scaledHeight = NearestPOW( scaledHeight, gl_round_down->integer );
 	}
 
-	#ifdef _3DS
+	#ifdef __3DS__
 	if( flags == (TF_FONT | TF_NEAREST) )
 	{
 		*width = scaledWidth;

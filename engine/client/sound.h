@@ -31,7 +31,7 @@ extern byte *sndpool;
 #define SOUND_32k		32000	// 32khz sample rate
 #define SOUND_44k		44100	// 44khz sample rate
 
-#ifdef _3DS
+#ifdef __3DS__
 #define SOUND_DMA_SPEED	SOUND_22k	// hardware playback rate
 #else
 #define SOUND_DMA_SPEED	SOUND_44k	// hardware playback rate

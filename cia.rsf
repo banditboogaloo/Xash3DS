@@ -1,12 +1,12 @@
 BasicInfo:
   Title                   : "Half-Life 3DS"
   CompanyCode             : "00"
-  ProductCode             : "CTR-P-HLIFE1"
+  ProductCode             : "CTR-P-HLIFE1C"
   ContentType             : Application
   Logo                    : Nintendo # Nintendo / Licensed / Distributed / iQue / iQueForSystem
 
 TitleInfo:
-  UniqueId                : 0xFF128
+  UniqueId                : 0xFF129
   Category                : Application
   
 Option:

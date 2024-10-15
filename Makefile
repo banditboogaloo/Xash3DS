@@ -40,9 +40,9 @@ GRAPHICS	:=	gfx
 GFXBUILD	:=	$(BUILD)
 #ROMFS		:=	romfs
 
-APP_TITLE	:=  Xash3DS 
+APP_TITLE	:=  Xash3DS+  
 APP_DESCRIPTION := Half-Life 3DS
-APP_AUTHOR  := MasterFeizz
+APP_AUTHOR  := seicore
 ICON 		:= icon.png
 
 #---------------------------------------------------------------------------------
@@ -54,20 +54,26 @@ CFLAGS	:=	-Wall -O2 -ffast-math -mword-relocations \
 			-fomit-frame-pointer -ffunction-sections \
 			-fdata-sections -fno-short-enums $(ARCH)
 
-CFLAGS	+=	$(INCLUDE) -DARM11 -D_3DS -DSINGLE_BINARY -DXASH_NO_ASYNC_NS_RESOLVE -DXASH_INTERNAL_GAMELIBS -DXASH_ALLOW_SAVERESTORE_OFFSETS -DXASH_GL_STATIC
+CFLAGS	+=	$(INCLUDE) -D__3DS__ -DSINGLE_BINARY -DXASH_NO_ASYNC_NS_RESOLVE -DXASH_INTERNAL_GAMELIBS -DXASH_ALLOW_SAVERESTORE_OFFSETS -DXASH_GL_STATIC
+
+#---------------------------------------------------------------------------------
+# build errors, todo investigate
+#---------------------------------------------------------------------------------
+CFLAGS  +=  --warn-no-implicit-function-declaration --warn-no-incompatible-pointer-types --warn-no-return-mismatch --warn-no-int-conversion
+
 
 CXXFLAGS	:= $(CFLAGS) -fno-rtti -fno-exceptions -std=gnu++11
 
 ASFLAGS	:=	-g $(ARCH)
 LDFLAGS	=	-specs=3dsx.specs -g $(ARCH) -Wl,-Map,$(notdir $*.map),--allow-multiple-definition
 
-LIBS	:=  -lpicaGL -lmainui -lclient -lserver -lctru -lm -lstdc++
+LIBS	:=  -lpicaGL -lmainui -lserver -lclient -lctru -lm -lstdc++
 
 #---------------------------------------------------------------------------------
 # list of directories containing libraries, this must be the top level containing
 # include and lib
 #---------------------------------------------------------------------------------
-LIBDIRS	:= $(CTRULIB) $(DEVKITPRO)/portlibs/3ds $(DEVKITPRO)/picaGL $(CURDIR)
+LIBDIRS	:= $(CTRULIB) $(DEVKITPRO)/portlibs/3ds $(CURDIR)/hlsdk_3ds $(CURDIR)/picaGL $(CURDIR)/mainui_3ds $(CURDIR)
 
 
 #---------------------------------------------------------------------------------

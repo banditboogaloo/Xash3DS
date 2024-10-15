@@ -114,7 +114,7 @@ GNU General Public License for more details.
 #define MAX_DLIGHTS			32	// dynamic lights (rendered per one frame)
 #define MAX_ELIGHTS			64	// entity only point lights
 #define MAX_LIGHTSTYLES		256	// a byte limit, don't modify
-#ifdef _3DS
+#ifdef __3DS__
 #define MAX_RENDER_DECALS	1024	// max rendering decals per a level
 #else
 #define MAX_RENDER_DECALS	4096	// max rendering decals per a level
