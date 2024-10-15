@@ -195,6 +195,15 @@ endif
 clean:
 	@echo clean ...
 	@rm -fr $(BUILD) $(TARGET).3dsx $(OUTPUT).smdh $(TARGET).elf $(GFXBUILD)
+	@echo clean submodules ...
+	$(MAKE) -C hlsdk_3ds clean
+	$(MAKE) -C mainui_3ds clean
+	$(MAKE) -C picaGL clean
+
+clean_submodules: clean
+	$(MAKE) -C hlsdk_3ds clean
+	$(MAKE) -C mainui_3ds clean
+	$(MAKE) -C picaGL clean
 
 #---------------------------------------------------------------------------------
 $(GFXBUILD)/%.t3x	$(BUILD)/%.h	:	%.t3s
