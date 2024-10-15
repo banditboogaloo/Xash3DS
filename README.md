@@ -26,24 +26,22 @@ The main instance requires 3 submodules to be compiled:
 - hlsdk_3ds
 
 All of these have their own READMEs and repositories, but in a nutshell:
-- Launch `devkitPro/mysys2/mysys2.exe` and execute the following, in order:
+Launch `devkitPro/mysys2/mysys2.exe` and `cd` into each submodule (eg. cd `mainui_3ds`), then run `make`.
+An example:
 ```bash
 cd mainui_3ds
-make clean all
-cd ..
-cd picaGL
-make clean all
-cd ..
-cd hlsdk_3ds
-cd dlls
-make clean all
-cd ..
-cd cl_dll
-make clean all
+make
 ```
-    
 
 And you're done.
+
+## 2 - Building and running the project
+Simply run `make` in the root directory to execute the build.
+
+After the **Xash3DS.3dsx** and **Xash3DS.elf** files were built successfully, run `make cia` to create a CIA that you can then install on your 3DS.
+
+## 3 - Cleaning project
+You can run `make clean_submodules` in the root directory to clean ALL build files, including submodules. Simply run `make clean` to just clean the root project build files.
 
 # Misc: Interesting observations about the original repository
 - There are a lot of vulgar comments, dont blame me:)
