@@ -36,6 +36,8 @@ make
 And you're done.
 
 ## 2 - Building and running the project
+> Make sure all the submodules have been built in step 2.
+
 Simply run `make` in the root directory to execute the build.
 
 After the **Xash3DS.3dsx** and **Xash3DS.elf** files were built successfully, run `make cia` to create a CIA that you can then install on your 3DS.
