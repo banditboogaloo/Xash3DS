@@ -12,9 +12,13 @@
 *   without written permission from Valve LLC.
 *
 ****/
-
-#ifndef EVENT_FLAGS_H
-#define EVENT_FLAGS_H
+#if !defined( EVENT_FLAGSH )
+#define EVENT_FLAGSH
+#ifdef _WIN32
+#ifndef __MINGW32__
+#pragma once
+#endif /* not __MINGW32__ */
+#endif
 
 // Skip local host for event send.
 #define FEV_NOTHOST		(1<<0)    
@@ -34,7 +38,7 @@
 #define FEV_UPDATE		(1<<3)
 
 // Only send to entity specified as the invoker
-#define FEV_HOSTONLY	(1<<4)
+#define	FEV_HOSTONLY	(1<<4)
 
 // Only send if the event was created on the server.
 #define FEV_SERVER		(1<<5)
@@ -42,4 +46,4 @@
 // Only issue event client side ( from shared code )
 #define FEV_CLIENT		(1<<6)
 
-#endif//EVENT_FLAGS_H
+#endif

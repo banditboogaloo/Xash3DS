@@ -65,18 +65,11 @@ typedef struct mobile_engfuncs_s
 	void (*pfnTouchSetClientOnly)( unsigned char state );
 
 	// Clean defaults list
-	void (*pfnTouchResetDefaultButtons)( void );
+	void (*pfnTouchResetDefaultButtons)();
 
 	// Draw scaled font for client
 	int (*pfnDrawScaledCharacter)( int x, int y, int number, int r, int g, int b, float scale );
 
-	void (*pfnSys_Warn)( const char *format, ... );
-
-	// Get native object for current platform.
-	// Pass NULL to arguments to receive an array of available objects or NULL if nothing
-	void *(*pfnGetNativeObject)( const char *obj );
-
-	void (*pfnSetCustomClientID)( const char *id );
 	// To be continued...
 } mobile_engfuncs_t;
 

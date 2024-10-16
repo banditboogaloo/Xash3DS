@@ -13,17 +13,28 @@ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 GNU General Public License for more details.
 */
 
-#ifndef WRECT_H
-#define WRECT_H
+#pragma once
+#if !defined( WRECTH )
+#define WRECTH
 
-typedef struct wrect_s
+typedef struct rect_s
 {
-	int	left, right, top, bottom;
+	int	left;
+	int right;
+	int top;
+	int bottom;
+
+#ifdef __cplusplus
+	int Width()
+	{
+		return right - left;
+	}
+
+	int Height()
+	{
+		return bottom - top;
+	}
+#endif
 } wrect_t;
 
-typedef struct rectf_s
-{
-	float x, y, w, h;
-} rectf_t;
-
-#endif //WRECT_H
+#endif

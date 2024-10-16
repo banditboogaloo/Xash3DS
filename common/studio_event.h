@@ -12,16 +12,20 @@
 *   without written permission from Valve LLC.
 *
 ****/
-
-#ifndef STUDIO_EVENT_H
-#define STUDIO_EVENT_H
+#if !defined( STUDIO_EVENTH )
+#define STUDIO_EVENTH
+#ifdef _WIN32
+#ifndef __MINGW32__
+#pragma once
+#endif /* not __MINGW32__ */
+#endif
 
 typedef struct mstudioevent_s
 {
-	int 		frame;
-	int		event;
-	int		type;
-	char		options[64];
+	int 				frame;
+	int					event;
+	int					type;
+	char				options[64];
 } mstudioevent_t;
 
-#endif//STUDIO_EVENT_H
+#endif // STUDIO_EVENTH

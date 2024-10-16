@@ -12,8 +12,13 @@
 *   without written permission from Valve LLC.
 *
 ****/
-#ifndef EVENT_ARGS_H
-#define EVENT_ARGS_H
+#if !defined( EVENT_ARGSH )
+#define EVENT_ARGSH
+#ifdef _WIN32
+#ifndef __MINGW32__
+#pragma once
+#endif /* not __MINGW32__ */
+#endif
 
 // Event was invoked with stated origin
 #define FEVENT_ORIGIN	( 1<<0 )
@@ -28,14 +33,14 @@ typedef struct event_args_s
 	// Transmitted
 	int		entindex;
 
-	float		origin[3];
-	float		angles[3];
-	float		velocity[3];
+	float	origin[3];
+	float	angles[3];
+	float	velocity[3];
 
 	int		ducking;
 
-	float		fparam1;
-	float		fparam2;
+	float	fparam1;
+	float	fparam2;
 
 	int		iparam1;
 	int		iparam2;
@@ -44,4 +49,4 @@ typedef struct event_args_s
 	int		bparam2;
 } event_args_t;
 
-#endif//EVENT_ARGS_H
+#endif
