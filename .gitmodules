@@ -7,3 +7,9 @@
 	path = picaGL
 	url = https://github.com/selimnahimi/picaGL.git
 	branch = master
+[submodule "regamelite"]
+	path = regamelite
+	url = https://github.com/selimnahimi/regamelite.git
+[submodule "cs16-client"]
+	path = cs16-client
+	url = https://github.com/selimnahimi/cs16-client.git
