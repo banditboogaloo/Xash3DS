@@ -54,7 +54,7 @@ CFLAGS	:=	-Wall -O2 -ffast-math -mword-relocations \
 			-fomit-frame-pointer -ffunction-sections \
 			-fdata-sections -fno-short-enums $(ARCH)
 
-CFLAGS	+=	$(INCLUDE) -D__3DS__ -DSINGLE_BINARY -DXASH_NO_ASYNC_NS_RESOLVE -DXASH_INTERNAL_GAMELIBS -DXASH_ALLOW_SAVERESTORE_OFFSETS -DXASH_GL_STATIC
+CFLAGS	+=	$(INCLUDE) -D__3DS__ -DSINGLE_BINARY -DXASH_NO_ASYNC_NS_RESOLVE -DXASH_INTERNAL_GAMELIBS -DXASH_ALLOW_SAVERESTORE_OFFSETS -DXASH_GL_STATIC -DXASH_GAMEDIR=\"cstrike\" -DDEFAULT_DEV=3
 
 #---------------------------------------------------------------------------------
 # build errors, todo investigate
@@ -73,7 +73,7 @@ LIBS	:=  -lpicaGL -lmainui -lserver -lclient -lctru -lm -lstdc++
 # list of directories containing libraries, this must be the top level containing
 # include and lib
 #---------------------------------------------------------------------------------
-LIBDIRS	:= $(CTRULIB) $(DEVKITPRO)/portlibs/3ds $(CURDIR)/hlsdk_3ds $(CURDIR)/picaGL $(CURDIR)/mainui_3ds $(CURDIR)
+LIBDIRS	:= $(CTRULIB) $(DEVKITPRO)/portlibs/3ds $(CURDIR)/picaGL $(CURDIR)/mainui_3ds $(CURDIR)
 
 
 #---------------------------------------------------------------------------------
@@ -195,10 +195,6 @@ endif
 clean:
 	@echo clean ...
 	@rm -fr $(BUILD) $(TARGET).3dsx $(OUTPUT).smdh $(TARGET).elf $(GFXBUILD)
-	@echo clean submodules ...
-	$(MAKE) -C hlsdk_3ds clean
-	$(MAKE) -C mainui_3ds clean
-	$(MAKE) -C picaGL clean
 
 clean_submodules: clean
 	$(MAKE) -C hlsdk_3ds clean
