@@ -1291,6 +1291,7 @@ int EXPORT Host_Main( int argc, const char **argv, const char *progname, int bCh
 	romfsInit();
 
 	recursive_mkdir( "sdmc:/xash3d/valve/save", 0775 ); // crashes without this dir
+	recursive_mkdir( "sdmc:/xash3d/cstrike/save", 0775 ); // crashes without this dir
 
 	pglInit();
 	glLoadIdentity();
