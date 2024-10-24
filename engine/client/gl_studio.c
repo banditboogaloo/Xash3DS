@@ -3786,6 +3786,8 @@ static void R_StudioLoadTexture( model_t *mod, studiohdr_t *phdr, mstudiotexture
 	char		texname[128], name[128], mdlname[128];
 	imgfilter_t	*filter = NULL;
 	texture_t		*tx = NULL;
+
+	// MsgDev( D_WARN, "R_StudioLoadTexture: %s\n", ptexture->name );
 	
 	if( ptexture->flags & STUDIO_NF_NORMALMAP )
 		flags |= (TF_NORMALMAP);
@@ -3942,9 +3944,13 @@ void Mod_LoadStudioModel( model_t *mod, const void *buffer, qboolean *loaded )
 {
 	studiohdr_t	*phdr;
 
+	// Q_strncpy( "bag.mdl", mod->name, sizeof( "bag.mdl" ));
+
 	if( loaded ) *loaded = false;
 	loadmodel->mempool = Mem_AllocPool( va( "^2%s^7", loadmodel->name ));
 	loadmodel->type = mod_studio;
+
+	// MsgDev( D_WARN, "Mod_LoadStudioModel: %s\n", mod->name );
 
 	phdr = R_StudioLoadHeader( mod, buffer );
 	if( !phdr ) return;	// bad model

@@ -3009,6 +3009,8 @@ model_t *Mod_LoadModel( model_t *mod, qboolean crash )
 	char	tempname[64];
 	qboolean	loaded;
 
+	Msg( "Mod_LoadModel: %s\n", mod->name );
+
 	if( !mod )
 	{
 		if( crash ) Host_MapDesignError( "Mod_ForName: NULL model\n" );

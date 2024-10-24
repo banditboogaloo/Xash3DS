@@ -114,7 +114,8 @@ loopcontinue:;
 
 		pool->realsize += sizeof( memclump_t );
 		clump = malloc( sizeof( memclump_t ));
-		if( clump == NULL ) Sys_Error( "Mem_Alloc: out of memory (alloc at %s:%i)\n", filename, fileline );
+		Msg("[%s]: %d\n", pool->name, pool->realsize);
+		if( clump == NULL ) Sys_Error( "Mem_Alloc: out of memory (alloc at %s:%i). Pool size: %d, name: %s\n", filename, fileline, pool->realsize, pool->name );
 		_Q_memset( clump, 0, sizeof( memclump_t ), filename, fileline );
 		*clumpchainpointer = clump;
 		clump->sentinel1 = MEMCLUMP_SENTINEL;
@@ -136,7 +137,8 @@ choseclump:
 		// big allocations are not clumped
 		pool->realsize += sizeof( memheader_t ) + size + sizeof( int );
 		mem = (memheader_t *)malloc( sizeof( memheader_t ) + size + sizeof( int ));
-		if( mem == NULL ) Sys_Error( "Mem_Alloc: out of memory (alloc at %s:%i)\n", filename, fileline );
+		Msg("[%s]: %d\n", pool->name, pool->realsize);
+		if( mem == NULL ) Sys_Error( "Mem_Alloc: out of memory (alloc at %s:%i). Tried to alloc %d. Pool new size: %d, name: %s\n", filename, fileline, (sizeof( memheader_t ) + size + sizeof( int )), pool->realsize, pool->name );
 		mem->clump = NULL;
 	}
 

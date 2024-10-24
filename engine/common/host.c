@@ -1303,6 +1303,8 @@ int EXPORT Host_Main( int argc, const char **argv, const char *progname, int bCh
 	extern int ctr_installdll_client( void );
 	ctr_installdll_client( );
 
+	consoleInit(GFX_BOTTOM, NULL);
+
 	#endif
 
 	pChangeGame = func;	// may be NULL
