@@ -41,7 +41,7 @@ GFXBUILD	:=	$(BUILD)
 #ROMFS		:=	romfs
 
 APP_TITLE	:=  Xash3DS+  
-APP_DESCRIPTION := Half-Life 3DS
+APP_DESCRIPTION := Counter-Strike 3DS
 APP_AUTHOR  := seicore
 ICON 		:= icon.png
 
