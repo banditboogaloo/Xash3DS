@@ -24,6 +24,10 @@ GNU General Public License for more details.
 #include "particledef.h"
 #include "entity_types.h"
 
+#ifdef __3DS__
+#include <3ds.h>
+#endif
+
 #define IsLiquidContents( cnt )	( cnt == CONTENTS_WATER || cnt == CONTENTS_SLIME || cnt == CONTENTS_LAVA )
 
 msurface_t	*r_debug_surface;
@@ -1354,6 +1358,21 @@ void R_EndFrame( void )
 #elif defined __ANDROID__ // For direct android backend
 	Android_SwapBuffers();
 #elif defined __3DS__
+	if (render_3d_state.is_3d)
+	{
+		if (render_3d_state.is_left_eye)
+		{
+			pglSelectScreen(GFX_TOP, GFX_LEFT);
+		}
+		else
+		{
+			pglSelectScreen(GFX_TOP, GFX_RIGHT);
+		}
+	}
+	else
+	{
+		pglSelectScreen(GFX_TOP, GFX_LEFT);
+	}
 	pglSwapBuffers();
 #endif
 }

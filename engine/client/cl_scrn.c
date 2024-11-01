@@ -22,6 +22,10 @@ GNU General Public License for more details.
 #include "qfont.h"
 #include "library.h"
 
+#ifdef __3DS__
+#include <3ds.h>
+#endif
+
 convar_t *scr_centertime;
 convar_t *scr_loading;
 convar_t *scr_download;
@@ -33,6 +37,10 @@ convar_t *cl_allow_levelshots;
 convar_t *cl_levelshot_name;
 convar_t *cl_envshot_size;
 convar_t *scr_dark;
+
+#ifdef __3DS__
+int render_count_3d = 0;
+#endif
 
 typedef struct
 {
@@ -496,6 +504,17 @@ text to the screen.
 */
 void SCR_UpdateScreen( void )
 {
+	#ifdef __3DS__
+	float slider_3d = osGet3DSliderState();
+
+	// Render twice for 3D
+	// todo: osGet3DSliderState()
+	render_3d_state.is_3d = gfxIs3D() && slider_3d > 0.0f;
+	render_3d_state.is_left_eye = false;
+
+	do {
+	render_3d_state.is_left_eye = !render_3d_state.is_left_eye;
+	#endif
 	if( !V_PreRender( )) return;
 
 	switch( cls.state )
@@ -518,6 +537,9 @@ void SCR_UpdateScreen( void )
 	}
 
 	V_PostRender();
+	#ifdef __3DS__
+	} while (render_3d_state.is_3d && render_3d_state.is_left_eye);
+	#endif
 }
 
 void SCR_LoadCreditsFont( void )

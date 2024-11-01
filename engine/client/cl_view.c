@@ -25,6 +25,9 @@ GNU General Public License for more details.
 #include "touch.h" // IN_TouchDraw( )
 #include "joyinput.h" // Joy_DrawOnScreenKeyboard( )
 
+#ifdef __3DS__
+#include <3ds.h>
+#endif
 
 /*
 ===============
@@ -309,11 +312,37 @@ void V_CalcRefDef( void )
 	R_Set2DMode( false );
 	tr.framecount++;	// g-cont. keep actual frame for all viewpasses
 
+	#ifdef __3DS__
+	float slider_3d = osGet3DSliderState();
+	#endif
+
 	do
 	{
 		clgame.dllFuncs.pfnCalcRefdef( &cl.refdef );
+
+		#ifdef __3DS__
+		if (render_3d_state.is_3d)
+		{
+			if (render_3d_state.is_left_eye)
+			{
+				// 3D: left eye
+				cl.refdef.vieworg[0] -= cl.refdef.right[0] * 4 * slider_3d;
+				cl.refdef.vieworg[1] -= cl.refdef.right[1] * 4 * slider_3d;
+				cl.refdef.vieworg[2] -= cl.refdef.right[2] * 4 * slider_3d;
+			}
+			else
+			{
+				// 3D: right eye
+				cl.refdef.vieworg[0] += cl.refdef.right[0] * 4 * slider_3d;
+				cl.refdef.vieworg[1] += cl.refdef.right[1] * 4 * slider_3d;
+				cl.refdef.vieworg[2] += cl.refdef.right[2] * 4 * slider_3d;
+			}
+		}
+		#endif
+		
 		V_MergeOverviewRefdef( &cl.refdef );
 		R_RenderFrame( &cl.refdef, true );
+
 		cl.refdef.onlyClientDraw = false;
 	} while( cl.refdef.nextView );
 

@@ -1288,6 +1288,9 @@ int EXPORT Host_Main( int argc, const char **argv, const char *progname, int bCh
 	gfxSetDoubleBuffering(GFX_BOTTOM, false);
 	gfxSwapBuffersGpu();
 
+	// Stereoscopic 3D
+	gfxSet3D(true);
+
 	romfsInit();
 
 	recursive_mkdir( "sdmc:/xash3d/valve/save", 0775 ); // crashes without this dir

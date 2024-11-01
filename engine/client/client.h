@@ -48,6 +48,16 @@ GNU General Public License for more details.
 #define VID_MAPSHOT		3	// special case for overview layer
 #define VID_SNAPSHOT	4	// save screenshot into root dir and no gamma correction
 
+#ifdef __3DS__
+typedef struct render_3d_state_s
+{
+	qboolean is_3d;
+	qboolean is_left_eye;
+} render_3d_state_t;
+
+extern render_3d_state_t		render_3d_state;
+#endif
+
 //=============================================================================
 typedef struct netbandwithgraph_s
 {

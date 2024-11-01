@@ -86,6 +86,10 @@ client_t		cl;
 client_static_t	cls;
 clgame_static_t	clgame;
 
+#ifdef __3DS__
+render_3d_state_t render_3d_state;
+#endif
+
 //======================================================================
 qboolean CL_Active( void )
 {
