@@ -535,6 +535,20 @@ draw hudsprite routine
 */
 static void SPR_DrawGeneric( int frame, float x, float y, float width, float height, const wrect_t *prc )
 {
+	#ifdef __3DS__
+	if (render_3d_state.is_3d)
+	{
+		if (render_3d_state.is_left_eye)
+		{
+			x += render_3d_state.slider * HUD_3D_OFFSET_X;
+		}
+		else
+		{
+			x -= render_3d_state.slider * HUD_3D_OFFSET_X;
+		}
+	}
+	#endif
+
 	float	s1, s2, t1, t2;
 	int	texnum;
 
@@ -1465,6 +1479,20 @@ pfnFillRGBA
 */
 void GAME_EXPORT CL_FillRGBA( int x, int y, int width, int height, int r, int g, int b, int a )
 {
+	#ifdef __3DS__
+	if (render_3d_state.is_3d)
+	{
+		if (render_3d_state.is_left_eye)
+		{
+			x += render_3d_state.slider * HUD_3D_OFFSET_X;
+		}
+		else
+		{
+			x -= render_3d_state.slider * HUD_3D_OFFSET_X;
+		}
+	}
+	#endif
+
 	float x1 = x, y1 = y, w1 = width, h1 = height;
 	r = bound( 0, r, 255 );
 	g = bound( 0, g, 255 );
@@ -2936,6 +2964,20 @@ pfnFillRGBABlend
 */
 void GAME_EXPORT CL_FillRGBABlend( int x, int y, int width, int height, int r, int g, int b, int a )
 {
+	#ifdef __3DS__
+	if (render_3d_state.is_3d)
+	{
+		if (render_3d_state.is_left_eye)
+		{
+			x += render_3d_state.slider * HUD_3D_OFFSET_X;
+		}
+		else
+		{
+			x -= render_3d_state.slider * HUD_3D_OFFSET_X;
+		}
+	}
+	#endif
+	
 	float x1 = x, y1 = y, w1 = width, h1 = height;
 	r = bound( 0, r, 255 );
 	g = bound( 0, g, 255 );

@@ -505,11 +505,10 @@ text to the screen.
 void SCR_UpdateScreen( void )
 {
 	#ifdef __3DS__
-	float slider_3d = osGet3DSliderState();
-
 	// Render twice for 3D
 	// todo: osGet3DSliderState()
-	render_3d_state.is_3d = gfxIs3D() && slider_3d > 0.0f;
+	render_3d_state.slider = osGet3DSliderState();
+	render_3d_state.is_3d = gfxIs3D() && render_3d_state.slider > 0.0f;
 	render_3d_state.is_left_eye = false;
 
 	do {

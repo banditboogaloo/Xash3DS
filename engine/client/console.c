@@ -758,6 +758,20 @@ to a fixed color.
 */
 int Con_DrawGenericString( int x, int y, const char *string, rgba_t setColor, qboolean forceColor, int hideChar )
 {
+	#ifdef __3DS__
+	if (render_3d_state.is_3d)
+	{
+		if (render_3d_state.is_left_eye)
+		{
+			x += render_3d_state.slider * HUD_3D_OFFSET_X;
+		}
+		else
+		{
+			x -= render_3d_state.slider * HUD_3D_OFFSET_X;
+		}
+	}
+	#endif
+
 	rgba_t		color;
 	int		drawLen = 0;
 	int		numDraws = 0;

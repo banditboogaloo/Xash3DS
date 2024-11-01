@@ -310,6 +310,20 @@ draw hudsprite routine
 */
 static void PIC_DrawGeneric( float x, float y, float width, float height, const wrect_t *prc )
 {
+	#ifdef __3DS__
+	if (render_3d_state.is_3d)
+	{
+		if (render_3d_state.is_left_eye)
+		{
+			x += render_3d_state.slider * HUD_3D_OFFSET_X;
+		}
+		else
+		{
+			x -= render_3d_state.slider * HUD_3D_OFFSET_X;
+		}
+	}
+	#endif
+
 	float	s1, s2, t1, t2;
 	int	w, h;
 

@@ -312,10 +312,6 @@ void V_CalcRefDef( void )
 	R_Set2DMode( false );
 	tr.framecount++;	// g-cont. keep actual frame for all viewpasses
 
-	#ifdef __3DS__
-	float slider_3d = osGet3DSliderState();
-	#endif
-
 	do
 	{
 		clgame.dllFuncs.pfnCalcRefdef( &cl.refdef );
@@ -326,16 +322,16 @@ void V_CalcRefDef( void )
 			if (render_3d_state.is_left_eye)
 			{
 				// 3D: left eye
-				cl.refdef.vieworg[0] -= cl.refdef.right[0] * 4 * slider_3d;
-				cl.refdef.vieworg[1] -= cl.refdef.right[1] * 4 * slider_3d;
-				cl.refdef.vieworg[2] -= cl.refdef.right[2] * 4 * slider_3d;
+				cl.refdef.vieworg[0] -= cl.refdef.right[0] * VIEW_3D_OFFSET_X * render_3d_state.slider;
+				cl.refdef.vieworg[1] -= cl.refdef.right[1] * VIEW_3D_OFFSET_X * render_3d_state.slider;
+				cl.refdef.vieworg[2] -= cl.refdef.right[2] * VIEW_3D_OFFSET_X * render_3d_state.slider;
 			}
 			else
 			{
 				// 3D: right eye
-				cl.refdef.vieworg[0] += cl.refdef.right[0] * 4 * slider_3d;
-				cl.refdef.vieworg[1] += cl.refdef.right[1] * 4 * slider_3d;
-				cl.refdef.vieworg[2] += cl.refdef.right[2] * 4 * slider_3d;
+				cl.refdef.vieworg[0] += cl.refdef.right[0] * VIEW_3D_OFFSET_X * render_3d_state.slider;
+				cl.refdef.vieworg[1] += cl.refdef.right[1] * VIEW_3D_OFFSET_X * render_3d_state.slider;
+				cl.refdef.vieworg[2] += cl.refdef.right[2] * VIEW_3D_OFFSET_X * render_3d_state.slider;
 			}
 		}
 		#endif
