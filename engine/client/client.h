@@ -49,8 +49,8 @@ GNU General Public License for more details.
 #define VID_SNAPSHOT	4	// save screenshot into root dir and no gamma correction
 
 #ifdef __3DS__
-#define VIEW_3D_OFFSET_X 2
-#define HUD_3D_OFFSET_X 3
+#define VIEW_3D_OFFSET_X 3
+#define HUD_3D_OFFSET_X 4
 
 typedef struct render_3d_state_s
 {

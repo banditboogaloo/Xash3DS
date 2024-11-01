@@ -325,6 +325,11 @@ void V_CalcRefDef( void )
 				cl.refdef.vieworg[0] -= cl.refdef.right[0] * VIEW_3D_OFFSET_X * render_3d_state.slider;
 				cl.refdef.vieworg[1] -= cl.refdef.right[1] * VIEW_3D_OFFSET_X * render_3d_state.slider;
 				cl.refdef.vieworg[2] -= cl.refdef.right[2] * VIEW_3D_OFFSET_X * render_3d_state.slider;
+
+				// Offset viewmodel slightly to not hurt the eyes
+				clgame.viewent.origin[0] -= cl.refdef.right[0] * HUD_3D_OFFSET_X * render_3d_state.slider * 0.5f;
+				clgame.viewent.origin[1] -= cl.refdef.right[1] * HUD_3D_OFFSET_X * render_3d_state.slider * 0.5f;
+				clgame.viewent.origin[2] -= cl.refdef.right[2] * HUD_3D_OFFSET_X * render_3d_state.slider * 0.5f;
 			}
 			else
 			{
@@ -332,6 +337,11 @@ void V_CalcRefDef( void )
 				cl.refdef.vieworg[0] += cl.refdef.right[0] * VIEW_3D_OFFSET_X * render_3d_state.slider;
 				cl.refdef.vieworg[1] += cl.refdef.right[1] * VIEW_3D_OFFSET_X * render_3d_state.slider;
 				cl.refdef.vieworg[2] += cl.refdef.right[2] * VIEW_3D_OFFSET_X * render_3d_state.slider;
+
+				// Offset viewmodel slightly to not hurt the eyes
+				clgame.viewent.origin[0] += cl.refdef.right[0] * HUD_3D_OFFSET_X * render_3d_state.slider * 0.5f;
+				clgame.viewent.origin[1] += cl.refdef.right[1] * HUD_3D_OFFSET_X * render_3d_state.slider * 0.5f;
+				clgame.viewent.origin[2] += cl.refdef.right[2] * HUD_3D_OFFSET_X * render_3d_state.slider * 0.5f;
 			}
 		}
 		#endif
