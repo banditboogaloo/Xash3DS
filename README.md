@@ -6,6 +6,7 @@ Since the original project has been abandoned, this fork aims to bring improveme
 
 ## What changes are in this fork?
 - Project structure: building the project from scratch is super easy, provided you have devkitPro set up.
+- 3D support
 
 ## What changes are planned in this fork?
 - Extensive mod support
