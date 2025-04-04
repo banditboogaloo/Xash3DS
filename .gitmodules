@@ -5,7 +5,7 @@
 
 [submodule "hlsdk_3ds"]
 	path = hlsdk_3ds
-	url = https://github.com/selimnahimi/hlsdk_3ds.git
+	url = https://github.com/banditboogaloo/hlsdk_3ds.git
 	branch = master
 	
 [submodule "picaGL"]
